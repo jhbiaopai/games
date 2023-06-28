@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+# 1 - Import library
+import pygame
+from pygame.locals import *
+import math
+import random
+# 2 - Initialize the game
+keys = [False, False, False, False]
+playerpos=[100,100]
+acc=[0,0]
+arrows=[]
+badtimer=100
+badtimer1=0
+badguys=[[640,100]]
+healthvalue=194
+pygame.init()
+width, height = 640, 480
+screen=pygame.display.set_mode((width, height))
+
+pygame.mixer.init()
+ 
+# 3 - Load images
+player = pygame.image.load("resources/images/dude.png")
+grass = pygame.image.load("resources/images/grass.png")
+castle = pygame.image.load("resources/images/castle.png")
+arrow = pygame.image.load("resources/images/bullet.png")
+badguyimg1 = pygame.image.load("resources/images/badguy.png")
+gameover = pygame.image.load("resources/images/gameover.png")
+youwin = pygame.image.load("resources/images/youwin.png")
+healthbar = pygame.image.load("resources/images/healthbar.png")
+health = pygame.image.load("resources/images/health.png")
+badguyimg=badguyimg1
+# 3.1 - Load audio
+hit = pygame.mixer.Sound("resources/audio/explode.wav")
+enemy = pygame.mixer.Sound("resources/audio/enemy.wav")
+shoot = pygame.mixer.Sound("resources/audio/shoot.wav")
+hit.set_volume(0.05)
+enemy.set_volume(0.05)
+shoot.set_volume(0.05)
+pygame.mixer.music.load('resources/audio/moonlight.wav')
+pygame.mixer.music.play(-1, 0.0)
+pygame.mixer.music.set_volume(0.25)
+# 4 - keep looping through
+running = 1
+exitcode = 0
+while running:
+    badtimer-=1
+    # 5 - clear the screen before drawing it again
+    screen.fill(0)
+ 
